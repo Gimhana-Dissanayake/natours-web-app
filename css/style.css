@@ -63,7 +63,7 @@ body{
     top:40%;
     left:50%;
     transform: translate(-50%, -50%);
-
+    text-align: center;
 }
 
 .heading-primary{
@@ -72,6 +72,7 @@ body{
 
     /* shaky bug fix. lecture - 8.creating cool css animations */
     backface-visibility: hidden;
+    margin-bottom:60px;
 }
 
 .heading-primary-main{
@@ -133,4 +134,35 @@ One is opacity and the other is transform property */
         opacity: 1;
         transform: translate(0);
     }
+}
+
+/* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
+
+.btn:link,
+.btn:visited{
+
+    text-transform: uppercase;
+    text-decoration: none;
+    padding:15px 40px;
+    /* to make use of paddings,margins and heights and widths we should change this to inline-block, because ancqour tag is by default a inline element */
+    display: inline-block;
+    border-radius: 100px;
+    /* transition property should be in the initial state. Here the initial state is this class, which is .btn:link and .btn:visited */
+    transition:all .2s;
+
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white{
+    background-color: #fff;
+    color:#777;
 }

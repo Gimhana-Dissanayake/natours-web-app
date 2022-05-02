@@ -52,6 +52,12 @@ body{
    height: 35px;
 }
 
+/* animations can be used again and again. as an example we can use it on the logo as shown below */
+
+/* .logo:hover{
+    animation: moveInRight 1s ease-out
+} */
+
 .text-box{
     position: absolute;
     top:40%;
@@ -62,6 +68,10 @@ body{
 
 .heading-primary{
     color:#fff;
+    text-transform: uppercase;
+
+    /* shaky bug fix. lecture - 8.creating cool css animations */
+    backface-visibility: hidden;
 }
 
 .heading-primary-main{
@@ -69,6 +79,12 @@ body{
     font-size:60px;
     font-weight: 400;
     letter-spacing: 35px;
+    animation-name:moveToLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 2; */
+   
 }
 
 .heading-primary-sub{
@@ -76,4 +92,45 @@ body{
     font-size:20px;
     font-weight: 400;
     letter-spacing: 17.4px;
+
+    /* using the short form instead of the long form used in heading-primary-main class above */
+
+    animation: moveToRight 1s ease-out
+}
+
+/* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
+
+/* for browser performance it is only ever best to animate only two properties. 
+One is opacity and the other is transform property */
+
+@keyframes moveToLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveToRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

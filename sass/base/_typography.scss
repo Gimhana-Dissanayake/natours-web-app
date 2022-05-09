@@ -1,0 +1,66 @@
+
+/* setting project wide font definitions in the body */
+body{
+
+    /* We are adding font related rules here because nomally these properties are normally inherited. so we are using the power of inheritance here. Body is the parent element to all its child elements, so font-family will be inherited by all the child elements of the body */
+
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding:3rem;
+    
+}
+
+// In regular css we cannot put hexdecimal color code here into rgba function and then opacity and translate to color, it does not work like that, but in sass it works.
+
+
+.heading-primary{
+    color: $color-white;
+    text-transform: uppercase;
+
+
+    /* shaky bug fix. lecture - 8.creating cool css animations */
+    backface-visibility: hidden;
+    margin-bottom:6rem;
+
+
+    &--main{
+        display:block;
+        font-size:6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation-name:moveToLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        /* animation-delay: 3s; */
+        /* animation-iteration-count: 2; */
+       
+    }
+    
+    &--sub{
+        display: block;
+        font-size:2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+    
+        /* using the short form instead of the long form used in heading-primary-main class above */
+    
+        animation: moveToRight 1s ease-out
+    }
+    
+    
+}
+
+
+/* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
+
+/* for browser performance it is only ever best to animate only two properties. 
+One is opacity and the other is transform property */
+
+
+/* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
+
+/* rems useful to make a design responsive */
+
+

@@ -1,0 +1,64 @@
+// So, Let's start by creating the base folder
+
+// which is where we're going to put
+
+// our basic project definitions.
+
+// Like a project boiler plate.
+
+// So all of these folders are going to be
+
+// inside the SASS folder of course.
+
+// Now, inside this base folder,
+
+// we should have a file which is also called base.
+
+// So a base SASS file.
+
+// This file will be for the real low level basics,
+
+// such as resets and styles for the HTML
+
+// and body element selectors.
+
+// Note this file should be a partial
+
+// so we can later import it into the main SASS file.
+
+/* adding a basic reset */
+*,
+*::after,
+*::before{
+    margin:0;
+    padding:0;
+    box-sizing: inherit;
+}
+
+html{
+    // This defines what 1rem is
+    font-size: 62.5%;
+}
+
+/* // rem unit is always relative to root font size
+// If root font size is 16px the 1.5 rem means 24px, calculation is 1.5 * 16 = 24
+// Some properties such as the one related to text like font-size inherit the computed value of their parent elements
+// em use parent or current element as the reference while rem use root font size as the reference
+// when using em unit ,if it is a font, the font value is calculated based on the parent element's font. If it is a length, the length is calculated using the current elements font size. So in a nutshell when using ems, for fonts the reference is the parent, for length the reference is the current element.
+
+// rems always use the root font size as the reference
+
+
+// Properties related to font-family, font-size, color are inherited
+// properites like margins and padding are not inherited
+// The computed value of a property is what get inherited, not the declared value.
+// Inheritance of a property only works if no one declares a value for that property.
+// The inherit keyword forces inheritance on a certain property.
+// The initial keyword resets a property to its initial value. */
+
+
+
+body{
+  
+    box-sizing: border-box;
+}

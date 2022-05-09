@@ -1,3 +1,19 @@
+
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utitilites";
+
+@import "components/button";
+@import "layout/header";
+
+@import "pages/home";
+
 /*
 COLORS:
 
@@ -7,262 +23,10 @@ Dark green: #28b485
 
 */
 
-$color-primary:#55c57a;
-$color-primary-light:#7ed56f;
-$color-primary-dark:#28b485;
-
-$color-grey-dark:#777;
-$color-white: #fff;
-$color-black: #000;
-
-/* adding a basic reset */
-*,
-*::after,
-*::before{
-    margin:0;
-    padding:0;
-    box-sizing: inherit;
-}
-
-html{
-    font-size: 62.5%;
-}
-
-/* // rem unit is always relative to root font size
-// If root font size is 16px the 1.5 rem means 24px, calculation is 1.5 * 16 = 24
-// Some properties such as the one related to text like font-size inherit the computed value of their parent elements
-// em use parent or current element as the reference while rem use root font size as the reference
-// when using em unit ,if it is a font, the font value is calculated based on the parent element's font. If it is a length, the length is calculated using the current elements font size. So in a nutshell when using ems, for fonts the reference is the parent, for length the reference is the current element.
-
-// rems always use the root font size as the reference
-
-
-// Properties related to font-family, font-size, color are inherited
-// properites like margins and padding are not inherited
-// The computed value of a property is what get inherited, not the declared value.
-// Inheritance of a property only works if no one declares a value for that property.
-// The inherit keyword forces inheritance on a certain property.
-// The initial keyword resets a property to its initial value. */
 
 
 
-/* setting project wide font definitions in the body */
-body{
-
-    /* We are adding font related rules here because nomally these properties are normally inherited. so we are using the power of inheritance here. Body is the parent element to all its child elements, so font-family will be inherited by all the child elements of the body */
-
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    color: $color-grey-dark;
-    padding:3rem;
-    box-sizing: border-box;
-}
-
-// In regular css we cannot put hexdecimal color code here into rgba function and then opacity and translate to color, it does not work like that, but in sass it works.
 
 
 
-.header{
-    height: 95vh;
-    background-image:linear-gradient(
-    to right bottom,
-  rgba($color-primary-light,0.8),
-    rgba($color-primary-light, 0.8)) ,
-    url(../img/hero.jpg) ;
-    background-size: cover;
-    background-position: top;
-    position: relative;
-
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-
-    &__logo-box{
-        position: absolute;
-        top:4rem;
-        left:4rem;
-    }
-
-    &__logo{
-        height: 3.5rem;
-     }
-     
-     /* animations can be used again and again. as an example we can use it on the logo as shown below */
-     
-     /* .logo:hover{
-         animation: moveInRight 1s ease-out
-     } */
-     
-     &__text-box{
-         position: absolute;
-         top:40%;
-         left:50%;
-         transform: translate(-50%, -50%);
-         text-align: center;
-     }
-
-    
-}
-
-
-
-.heading-primary{
-    color: $color-white;
-    text-transform: uppercase;
-
-
-    /* shaky bug fix. lecture - 8.creating cool css animations */
-    backface-visibility: hidden;
-    margin-bottom:6rem;
-
-
-    &--main{
-        display:block;
-        font-size:6rem;
-        font-weight: 400;
-        letter-spacing: 3.5rem;
-        animation-name:moveToLeft;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-        /* animation-delay: 3s; */
-        /* animation-iteration-count: 2; */
-       
-    }
-    
-    &--sub{
-        display: block;
-        font-size:2rem;
-        font-weight: 700;
-        letter-spacing: 1.75rem;
-    
-        /* using the short form instead of the long form used in heading-primary-main class above */
-    
-        animation: moveToRight 1s ease-out
-    }
-    
-    
-}
-
-
-/* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
-
-/* for browser performance it is only ever best to animate only two properties. 
-One is opacity and the other is transform property */
-
-@keyframes moveToLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80% {
-        transform: translateX(1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveToRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-    
-}
-
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-
-/* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
-
-/* rems useful to make a design responsive */
-
-.btn{
-
-    &:link,
-    &:visited{
-    
-        text-transform: uppercase;
-        text-decoration: none;
-        padding:1.5rem 4rem;
-        /* to make use of paddings,margins and heights and widths we should change this to inline-block, because ancqour tag is by default a inline element */
-        display: inline-block;
-        border-radius: 10rem;
-        /* transition property should be in the initial state. Here the initial state is this class, which is .btn:link and .btn:visited */
-        transition:all .2s;
-        position: relative;
-        font-size:1.6rem;
-    }
-    
-    &:hover{
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-black,.2);
-
-        &::after{
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        
-        }
-
-    }
-    
-    &:active{
-        transform: translateY(-1px);
-        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
-    }
-    
-    &--white{
-        background-color: $color-white;
-        color: $color-grey-dark;
-
-        &::after{
-            background-color: $color-white;
-        }
-    }
-    
-    /* ABOUT PESUDO ELEMENTS - LECTURE 10.BUILDING A COMPLEX ANIMATED BUTTON - PART 2.THIS LECTURE IS VERY IMPORTANT */
-    
-    &::after{
-        content: "";
-        display:inline-block;
-        height:100%;
-        width:100%;
-        border-radius: 10rem;
-        position: absolute;
-        top:0;
-        left:0;
-        z-index: -1;
-        transition:all .4s;
-    }
-    
-    
-   
-    
-    &--animated{
-        animation: moveInBottom .5s ease-out .75s;
-        animation-fill-mode:backwards;
-    }
-
-}
 

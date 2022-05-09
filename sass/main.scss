@@ -8,17 +8,17 @@ Dark green: #28b485
 */
 
 /* adding a basic reset */
-*,*::after,*::before{
+*{
     margin:0;
     padding:0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 html{
-    font-size: 62.5%;
+    font-size:10px;
 }
 
-/* // rem unit is always relative to root font size
+// rem unit is always relative to root font size
 // If root font size is 16px the 1.5 rem means 24px, calculation is 1.5 * 16 = 24
 // Some properties such as the one related to text like font-size inherit the computed value of their parent elements
 // em use parent or current element as the reference while rem use root font size as the reference
@@ -32,7 +32,7 @@ html{
 // The computed value of a property is what get inherited, not the declared value.
 // Inheritance of a property only works if no one declares a value for that property.
 // The inherit keyword forces inheritance on a certain property.
-// The initial keyword resets a property to its initial value. */
+// The initial keyword resets a property to its initial value.
 
 
 
@@ -43,10 +43,10 @@ body{
 
     font-family: "Lato", sans-serif;
     font-weight: 400;
+    // font-size:16px;
     line-height: 1.7;
     color: #777;
     padding:3rem;
-    box-sizing: border-box;
 }
 
 .header{
@@ -63,13 +63,13 @@ body{
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
-.header__logo-box{
+.logo-box{
     position: absolute;
     top:4rem;
     left:4rem;
 }
 
-.header__logo{
+.logo{
    height: 3.5rem;
 }
 
@@ -79,7 +79,7 @@ body{
     animation: moveInRight 1s ease-out
 } */
 
-.header__text-box{
+.text-box{
     position: absolute;
     top:40%;
     left:50%;
@@ -96,7 +96,7 @@ body{
     margin-bottom:6rem;
 }
 
-.heading-primary--main{
+.heading-primary-main{
     display:block;
     font-size:6rem;
     font-weight: 400;
@@ -109,7 +109,7 @@ body{
    
 }
 
-.heading-primary--sub{
+.heading-primary-sub{
     display: block;
     font-size:2rem;
     font-weight: 700;
@@ -173,8 +173,6 @@ One is opacity and the other is transform property */
 
 /* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
 
-/* rems useful to make a design responsive */
-
 .btn:link,
 .btn:visited{
 
@@ -187,7 +185,7 @@ One is opacity and the other is transform property */
     /* transition property should be in the initial state. Here the initial state is this class, which is .btn:link and .btn:visited */
     transition:all .2s;
     position: relative;
-    font-size:1.6rem;
+
 }
 
 .btn:hover{
@@ -200,7 +198,7 @@ One is opacity and the other is transform property */
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
 
-.btn--white{
+.btn-white{
     background-color: #fff;
     color:#777;
 }
@@ -220,7 +218,7 @@ One is opacity and the other is transform property */
     transition:all .4s;
 }
 
-.btn--white::after{
+.btn-white::after{
     background-color: #fff;
 }
 
@@ -230,7 +228,7 @@ One is opacity and the other is transform property */
 
 }
 
-.btn--animated{
+.btn-animated{
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode:backwards;
 }

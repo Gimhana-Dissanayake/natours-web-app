@@ -52,6 +52,9 @@ html {
 // Inheritance of a property only works if no one declares a value for that property.
 // The inherit keyword forces inheritance on a certain property.
 // The initial keyword resets a property to its initial value. */
+body {
+  box-sizing: border-box; }
+
 /* setting project wide font definitions in the body */
 body {
   /* We are adding font related rules here because nomally these properties are normally inherited. so we are using the power of inheritance here. Body is the parent element to all its child elements, so font-family will be inherited by all the child elements of the body */
@@ -59,9 +62,37 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
+  padding: 3rem; }
 
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* shaky bug fix. lecture - 8.creating cool css animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveToLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 2; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* using the short form instead of the long form used in heading-primary-main class above */
+    animation: moveToRight 1s ease-out; }
+
+/* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
+/* for browser performance it is only ever best to animate only two properties. 
+One is opacity and the other is transform property */
+/* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
+/* rems useful to make a design responsive */
 .btn {
   /* ABOUT PESUDO ELEMENTS - LECTURE 10.BUILDING A COMPLEX ANIMATED BUTTON - PART 2.THIS LECTURE IS VERY IMPORTANT */ }
   .btn:link, .btn:visited {
@@ -104,6 +135,58 @@ body {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards; }
 
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: '';
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(126, 213, 111, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* animations can be used again and again. as an example we can use it on the logo as shown below */
+  /* .logo:hover{
+         animation: moveInRight 1s ease-out
+     } */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
 /*
 COLORS:
 
@@ -112,32 +195,3 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* shaky bug fix. lecture - 8.creating cool css animations */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveToLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /* animation-delay: 3s; */
-    /* animation-iteration-count: 2; */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    /* using the short form instead of the long form used in heading-primary-main class above */
-    animation: moveToRight 1s ease-out; }
-
-/* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
-/* for browser performance it is only ever best to animate only two properties. 
-One is opacity and the other is transform property */
-/* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
-/* rems useful to make a design responsive */

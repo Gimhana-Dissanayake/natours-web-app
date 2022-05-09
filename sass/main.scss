@@ -13,6 +13,7 @@ $color-primary-dark:#28b485;
 
 $color-grey-dark:#777;
 $color-white: #fff;
+$color-black: #000;
 
 /* adding a basic reset */
 *,
@@ -74,65 +75,73 @@ body{
     position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+    &__logo-box{
+        position: absolute;
+        top:4rem;
+        left:4rem;
+    }
+
+    &__logo{
+        height: 3.5rem;
+     }
+     
+     /* animations can be used again and again. as an example we can use it on the logo as shown below */
+     
+     /* .logo:hover{
+         animation: moveInRight 1s ease-out
+     } */
+     
+     &__text-box{
+         position: absolute;
+         top:40%;
+         left:50%;
+         transform: translate(-50%, -50%);
+         text-align: center;
+     }
+
+    
 }
 
-.header__logo-box{
-    position: absolute;
-    top:4rem;
-    left:4rem;
-}
 
-.header__logo{
-   height: 3.5rem;
-}
-
-/* animations can be used again and again. as an example we can use it on the logo as shown below */
-
-/* .logo:hover{
-    animation: moveInRight 1s ease-out
-} */
-
-.header__text-box{
-    position: absolute;
-    top:40%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 
 .heading-primary{
     color: $color-white;
     text-transform: uppercase;
 
+
     /* shaky bug fix. lecture - 8.creating cool css animations */
     backface-visibility: hidden;
     margin-bottom:6rem;
+
+
+    &--main{
+        display:block;
+        font-size:6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation-name:moveToLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        /* animation-delay: 3s; */
+        /* animation-iteration-count: 2; */
+       
+    }
+    
+    &--sub{
+        display: block;
+        font-size:2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+    
+        /* using the short form instead of the long form used in heading-primary-main class above */
+    
+        animation: moveToRight 1s ease-out
+    }
+    
     
 }
 
-.heading-primary--main{
-    display:block;
-    font-size:6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name:moveToLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    /* animation-delay: 3s; */
-    /* animation-iteration-count: 2; */
-   
-}
-
-.heading-primary--sub{
-    display: block;
-    font-size:2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-
-    /* using the short form instead of the long form used in heading-primary-main class above */
-
-    animation: moveToRight 1s ease-out
-}
 
 /* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
 
@@ -189,62 +198,71 @@ One is opacity and the other is transform property */
 
 /* rems useful to make a design responsive */
 
-.btn:link,
-.btn:visited{
+.btn{
 
-    text-transform: uppercase;
-    text-decoration: none;
-    padding:1.5rem 4rem;
-    /* to make use of paddings,margins and heights and widths we should change this to inline-block, because ancqour tag is by default a inline element */
-    display: inline-block;
-    border-radius: 10rem;
-    /* transition property should be in the initial state. Here the initial state is this class, which is .btn:link and .btn:visited */
-    transition:all .2s;
-    position: relative;
-    font-size:1.6rem;
+    &:link,
+    &:visited{
+    
+        text-transform: uppercase;
+        text-decoration: none;
+        padding:1.5rem 4rem;
+        /* to make use of paddings,margins and heights and widths we should change this to inline-block, because ancqour tag is by default a inline element */
+        display: inline-block;
+        border-radius: 10rem;
+        /* transition property should be in the initial state. Here the initial state is this class, which is .btn:link and .btn:visited */
+        transition:all .2s;
+        position: relative;
+        font-size:1.6rem;
+    }
+    
+    &:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        
+        }
+
+    }
+    
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+    
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+    
+    /* ABOUT PESUDO ELEMENTS - LECTURE 10.BUILDING A COMPLEX ANIMATED BUTTON - PART 2.THIS LECTURE IS VERY IMPORTANT */
+    
+    &::after{
+        content: "";
+        display:inline-block;
+        height:100%;
+        width:100%;
+        border-radius: 10rem;
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: -1;
+        transition:all .4s;
+    }
+    
+    
+   
+    
+    &--animated{
+        animation: moveInBottom .5s ease-out .75s;
+        animation-fill-mode:backwards;
+    }
+
 }
 
-.btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-}
-
-.btn:active{
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
-}
-
-.btn--white{
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
-
-/* ABOUT PESUDO ELEMENTS - LECTURE 10.BUILDING A COMPLEX ANIMATED BUTTON - PART 2.THIS LECTURE IS VERY IMPORTANT */
-
-.btn::after{
-    content: "";
-    display:inline-block;
-    height:100%;
-    width:100%;
-    border-radius: 10rem;
-    position: absolute;
-    top:0;
-    left:0;
-    z-index: -1;
-    transition:all .4s;
-}
-
-.btn--white::after{
-    background-color: $color-white;
-}
-
-.btn:hover::after{
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-
-}
-
-.btn--animated{
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode:backwards;
-}

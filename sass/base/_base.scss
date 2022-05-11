@@ -29,15 +29,15 @@
 /* adding a basic reset */
 *,
 *::after,
-*::before{
-    margin:0;
-    padding:0;
-    box-sizing: inherit;
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-html{
-    // This defines what 1rem is
-    font-size: 62.5%;
+html {
+  // This defines what 1rem is
+  font-size: 62.5%;
 }
 
 /* // rem unit is always relative to root font size
@@ -56,9 +56,6 @@ html{
 // The inherit keyword forces inheritance on a certain property.
 // The initial keyword resets a property to its initial value. */
 
-
-
-body{
-  
-    box-sizing: border-box;
+body {
+  box-sizing: border-box;
 }

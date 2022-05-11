@@ -1,85 +1,80 @@
-
 /* setting project wide font definitions in the body */
-body{
+body {
+  /* We are adding font related rules here because nomally these properties are normally inherited. so we are using the power of inheritance here. Body is the parent element to all its child elements, so font-family will be inherited by all the child elements of the body */
 
-    /* We are adding font related rules here because nomally these properties are normally inherited. so we are using the power of inheritance here. Body is the parent element to all its child elements, so font-family will be inherited by all the child elements of the body */
-
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    color: $color-grey-dark;
-    padding:3rem;
-    
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
 }
 
 // In regular css we cannot put hexdecimal color code here into rgba function and then opacity and translate to color, it does not work like that, but in sass it works.
 
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
 
-.heading-primary{
-    color: $color-white;
-    text-transform: uppercase;
+  /* shaky bug fix. lecture - 8.creating cool css animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
 
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveToLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 2; */
+  }
 
-    /* shaky bug fix. lecture - 8.creating cool css animations */
-    backface-visibility: hidden;
-    margin-bottom:6rem;
-
-
-    &--main{
-        display:block;
-        font-size:6rem;
-        font-weight: 400;
-        letter-spacing: 3.5rem;
-        animation-name:moveToLeft;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-        /* animation-delay: 3s; */
-        /* animation-iteration-count: 2; */
-       
-    }
-    
-    &--sub{
-        display: block;
-        font-size:2rem;
-        font-weight: 700;
-        letter-spacing: 1.75rem;
-    
-        /* using the short form instead of the long form used in heading-primary-main class above */
-    
-        animation: moveToRight 1s ease-out
-    }
-    
-    
-}
-
-.heading-secondary{
-    font-size: 3.5rem;
-    text-transform: uppercase;
+  &--sub {
+    display: block;
+    font-size: 2rem;
     font-weight: 700;
-    display: inline-block;
-    background-image:linear-gradient(to right, $color-primary-light, $color-primary-dark);
-    -webkit-background-clip: text;
-    color:transparent;
-    letter-spacing: .2rem;
-    transition: all .2s;
+    letter-spacing: 1.75rem;
 
-    &:hover{
-        transform: skewY(2deg) skewX(15deg) scale(1.1);
-        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
-    }
+    /* using the short form instead of the long form used in heading-primary-main class above */
+
+    animation: moveToRight 1s ease-out;
+  }
 }
 
-.heading-tertiary{
-    font-size:$default-font-size;
-    font-weight:700;
-    text-transform: uppercase;
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
 }
 
-.paragraph{
-    font-size:$default-font-size;
-    &:not(:last-child){
-        margin-bottom:3rem;
-    }
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
 }
 
 /* Now there are two types of animations in CSS. First one is to use the transition property and change properites on an events like hover. Other animation types are using Keyframes */
@@ -87,9 +82,6 @@ body{
 /* for browser performance it is only ever best to animate only two properties. 
 One is opacity and the other is transform property */
 
-
 /* pesudo class are special state of a selector.Below is the link pesudo class. We use pesudo classes to style elements under special condition*/
 
 /* rems useful to make a design responsive */
-
-

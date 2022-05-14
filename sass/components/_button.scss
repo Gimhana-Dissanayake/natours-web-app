@@ -37,6 +37,15 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
   /* ABOUT PESUDO ELEMENTS - LECTURE 10.BUILDING A COMPLEX ANIMATED BUTTON - PART 2.THIS LECTURE IS VERY IMPORTANT */
 
   &::after {
